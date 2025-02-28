@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import { useAuth } from './AuthContext';
 
 const SOCKET_URL = import.meta.env.MODE === 'production'
-  ? 'https://your-production-url.com'
+  ? ''
   : 'http://localhost:5000';
 
 const SocketContext = createContext(null);

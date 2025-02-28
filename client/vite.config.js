@@ -6,14 +6,5 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: import.meta.env.MODE === 'production' 
-          ? 'https://your-production-url.com'
-          : 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
   }
 });
