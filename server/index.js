@@ -9,7 +9,7 @@ import messageRoutes from './src/routes/message.routes.js';
 import userRoutes from './src/routes/user.routes.js';
 import cors from 'cors';
 import path from 'path';
-
+import { fileURLToPath } from 'url';
 dotenv.config();
 
 connectDB();
@@ -18,7 +18,9 @@ const app = express();
 const httpServer = createServer(app);
 const io = configureSocket(httpServer);
 
-const __dirname = path.resolve();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 5000;
 app.use(cors(
@@ -52,9 +54,9 @@ app.use('/api/users', userRoutes);
 
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, './client/dist')));
+  app.use(express.static(path.join(__dirname, '../client/dist')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
   });
 }
 
