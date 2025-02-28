@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar {
+    @apply sticky top-0 z-50;
+  }
+  
+  .dropdown-content {
+    @apply shadow-lg ring-1 ring-black ring-opacity-5;
+  }
+}
